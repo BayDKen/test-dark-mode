@@ -9,22 +9,23 @@
     if (
       localStorage.getItem('color-theme') === 'dark' ||
       (!('color-theme' in localStorage) &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+      window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
   </script>
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 </head>
-<body class=" ">
+<body class="bg-gray-100 font-RedHat">
     <nav class="bg-gray-800 border-gray-200 px-2 sm:px-4 py-2.5">
       <div class="container mx-auto flex flex-wrap items-center justify-between">
         <a href="#" class="flex">
           <!-- <svg class="h-10 mr-3" viewBox="0 0 52 72" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.87695 53H28.7791C41.5357 53 51.877 42.7025 51.877 30H24.9748C12.2182 30 1.87695 40.2975 1.87695 53Z" fill="#76A9FA"></path><path d="M0.000409561 32.1646L0.000409561 66.4111C12.8618 66.4111 23.2881 55.9849 23.2881 43.1235L23.2881 8.87689C10.9966 8.98066 1.39567 19.5573 0.000409561 32.1646Z" fill="#A4CAFE"></path><path d="M50.877 5H23.9748C11.2182 5 0.876953 15.2975 0.876953 28H27.7791C40.5357 28 50.877 17.7025 50.877 5Z" fill="#1C64F2"></path></svg>
             <span class="self-center text-lg font-semibold whitespace-nowrap dark:text-white">FlowBite</span> -->
         </a>
-        <div class="text-gray-300 text-xl items-center">Uji Coba Dark Mode </div>
+        <div class="text-gray-300 text-xl items-center font-semibold">Uji Coba Dark Mode </div>
         <div class="flex md:order-2">
             
             <!-- Dark mode switcher -->
@@ -85,11 +86,18 @@
       </div>
     </nav>
 
-    <div class="bg-gray-300 border-gray-200 p-3 rounded-md lg:mt-4 lg:mx-32 dark:bg-gray-900 dark:text-gray-300 text-gray-800">
+    <div class="bg-gray-300 border-gray-200 p-3 rounded-md lg:mt-12 lg:mx-32 dark:bg-gray-900 dark:text-gray-300 text-gray-800"
+    style="
+      -webkit-animation-name: fadeIn; 
+      -webkit-animation-duration: 0.4s;
+      animation-name: fadeIn;
+      animation-duration: 0.4s;
+      "
+    >
       <div class="m-5 p-6 bg-gray-100 dark:bg-gray-800 rounded-md">
-        <h1 class="font-normal text-[32px]">Hello World</h1>
+        <h1 class=" text-[32px] font-normal">Hello World</h1>
         <div class="my-7 grid grid-cols-2 gap-8 h-[200px] w-full">
-          <div class="bg-gray-300 dark:bg-gray-700 rounded-md"></div>
+          <div  data-modal-target="modal-image" data-modal-toggle="modal-image" class="cursor-pointer bg-gray-300 dark:bg-gray-700 rounded-md"></div>
           <div class="bg-gray-300 dark:bg-gray-700 rounded-md"></div>
         </div>
         <h2 class="text-justify font-normal">
@@ -102,7 +110,36 @@
       </div>
     </div>
 
-  <script src="../path/to/flowbite/dist/flowbite.bundle.js"></script>
+    <!-- Main modal -->
+    <div id="modal-image" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+      >
+        <div class="relative w-full max-w-md max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="modal-image">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                <!-- Modal header -->
+                <div class="px-6 py-4 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-base font-semibold text-gray-900 lg:text-xl dark:text-white">
+                        Hello World
+                    </h3>
+                </div>
+                <!-- Modal body -->
+                <div class="p-6">
+                    <p class="text-sm font-normal text-gray-500 dark:text-gray-400">
+                      Ini adalah contoh modal yang muncul ketika image di klik.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+  <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
   <script src="/assets/js/script.js"></script>
 </body>
 </html>
